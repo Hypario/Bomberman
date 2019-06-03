@@ -7,12 +7,7 @@ public class BombController : MonoBehaviour
     public float countdown = 2f;
 
     private int range;
-
-    private void Start()
-    {
-        
-    }
-
+   
     // Update is called once per frame
     void Update()
     {

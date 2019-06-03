@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
             Vector3 cellCenterPos = tilemap.GetCellCenterWorld(cell); // get the center of the cell
             
             // if we aren't on a bomb, create a bomb
-            if (!BombHere(cellCenterPos))
+            if (!IsBomb(cellCenterPos))
             {
                 // create a bomb
                 GameObject bomb = Instantiate(bombPrefab, cellCenterPos, Quaternion.identity);
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    bool BombHere(Vector3 cell)
+    bool IsBomb(Vector3 cell)
     {
         GameObject[] bombs = GameObject.FindGameObjectsWithTag("Bomb");
         foreach (GameObject bombTest in bombs)
@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
                 return true;
             }
         }
-        // no bomb here ? return false
+        // we're not standing on a bomb ? return false
         return false;
     }
 }
