@@ -1,21 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
 
-    public Tilemap tilemap;
+    private Tilemap tilemap;
 
     public GameObject bombPrefab;
 
-    private int bombRange = 2;
+    public int bombRange = 2;
+    public float speed = 2.5f;
 
+    private Animator animator;
+    private Rigidbody2D body;
+    private Vector2 lookDirection = new Vector2(1, 0);
+    
     // Start is called before the first frame update
     void Start()
     {
-        Physics2D.gravity = Vector2.zero; // no gravity
+        animator = GetComponent<Animator>();
+        body = GetComponent<Rigidbody2D>();
+        tilemap = GameObject.FindGameObjectWithTag("Tilemap").GetComponent<Tilemap>();
     }
 
     // Update is called once per frame
@@ -24,10 +29,28 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        Vector2 position = transform.position;
-        position.x += 3.0f * horizontal * Time.deltaTime; // give the speed in units per second (cause of Time.deltaTime)
-        position.y += 3.0f * vertical * Time.deltaTime; // give the speed in units per second (cause of Time.deltaTime)
-        transform.position = position; // set the position
+        Vector2 move = new Vector2(horizontal, vertical);
+
+        // if we are moving, set the animation to moving, and set the direction we are looking
+        if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
+        {
+            lookDirection.Set(move.x, move.y);
+            lookDirection.Normalize();
+
+            animator.SetBool("Moving", true); // set the animation to moving
+            animator.SetFloat("Move X", horizontal); // set the sprite in X when moving
+            animator.SetFloat("Move Y", vertical); // set the sprite in Y when moving
+        } else // else we set the animation where we are looking at and set the animation to Iddle
+        {
+            animator.SetBool("Moving", false);
+            animator.SetFloat("Look X", lookDirection.x); // set the sprite in X when iddle
+            animator.SetFloat("Look Y", lookDirection.y); // set the sprite in Y when iddle
+        }
+
+        // calculate the next position based on the direction and speed in unit per second
+        Vector2 position = body.position;
+        position = position + move * speed * Time.deltaTime;
+        body.MovePosition(position); // move the "entity"
 
         if (Input.GetKeyDown("space"))
         {

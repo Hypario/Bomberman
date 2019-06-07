@@ -15,7 +15,8 @@ public class BombController : MonoBehaviour
 
         if (countdown <= 0f)
         {
-            MapController.instance.Explode(transform.position, range);
+            FindObjectOfType<MapController>().Explode(transform.position, range);
+            AudioManager.Instance.Play("explosion");
             Destroy(gameObject);
         }
     }

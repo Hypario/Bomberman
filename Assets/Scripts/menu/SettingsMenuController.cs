@@ -12,6 +12,7 @@ public class SettingsMenuController : MonoBehaviour
     Resolution[] resolutions;
 
     public Dropdown resolutionDropdown;
+    public Toggle FullScreenButton;
 
     private void Start()
     {
@@ -38,6 +39,8 @@ public class SettingsMenuController : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+
+        FullScreenButton.SetIsOnWithoutNotify(Screen.fullScreen);
     }
 
     public void SetResolution(int resolutionIndex)
