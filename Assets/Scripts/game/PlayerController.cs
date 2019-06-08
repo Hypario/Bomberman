@@ -8,8 +8,13 @@ public class PlayerController : MonoBehaviour
 
     public GameObject bombPrefab;
 
+    // stats
     public int bombRange = 2;
     public float speed = 2.5f;
+
+    // counter for the bombs
+    public int bombPlaced = 0;
+    public int bombMax = 1;
 
     private Animator animator;
     private Rigidbody2D body;
@@ -29,7 +34,7 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        Vector2 move = new Vector2(horizontal, vertical);
+        Vector2 move = new Vector2(horizontal, vertical); // get the movement vector via the horizontal and vertical input
 
         // if we are moving, set the animation to moving, and set the direction we are looking
         if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
@@ -52,30 +57,34 @@ public class PlayerController : MonoBehaviour
         position = position + move * speed * Time.deltaTime;
         body.MovePosition(position); // move the "entity"
 
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space")) // if we hit the spacebar
         {
-            // Get the cell the player is standing on
-            Vector3Int cell = tilemap.WorldToCell(position);
+            Vector3Int cell = tilemap.WorldToCell(position); // get the cell the player is standing on
             Vector3 cellCenterPos = tilemap.GetCellCenterWorld(cell); // get the center of the cell
             
             // if we aren't on a bomb, create a bomb
-            if (!IsBomb(cellCenterPos))
+            if (!IsBomb(cellCenterPos) && bombPlaced < bombMax)
             {
                 // create a bomb
                 GameObject bomb = Instantiate(bombPrefab, cellCenterPos, Quaternion.identity);
+                bombPlaced++; // increment the counter (when the bomb explose, the bomb is decremented)
 
-                // set the range of the bomb
-                bomb.GetComponent<BombController>().SetRange(bombRange);
+                // set the range of the bomb and his owner
+                BombController BombController = bomb.GetComponent<BombController>();
+                BombController.SetRange(bombRange);
+                BombController.SetOwner(this);
             }
         }
     }
 
+    // return true if we are on a bomb
     bool IsBomb(Vector3 cell)
     {
+        // get all the bombs on the map
         GameObject[] bombs = GameObject.FindGameObjectsWithTag("Bomb");
         foreach (GameObject bombTest in bombs)
         {
-            // Iterate through all bombs and find the one we are on
+            // Iterate through all bombs
 
             // If we are on a bomb
             if (Vector3.Distance(bombTest.transform.position, cell) == 0)
@@ -83,7 +92,7 @@ public class PlayerController : MonoBehaviour
                 return true;
             }
         }
-        // we're not standing on a bomb ? return false
+        // we are not on a bomb so return false
         return false;
     }
 }

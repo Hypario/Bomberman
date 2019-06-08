@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class PauseMenu : MonoBehaviour
+public class GameMenu : MonoBehaviour
 {
     
     public static bool paused = false;
@@ -23,6 +23,12 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
+    }
+
+    public void replay()
+    {
+        Resume();
+        SceneManager.LoadScene(Random.Range(1, SceneManager.sceneCountInBuildSettings));
     }
 
     public void Resume()

@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemController : MonoBehaviour
+public class SpeedUpgrade : MonoBehaviour
 {
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -16,9 +15,8 @@ public class ItemController : MonoBehaviour
     void Pickup(Collider2D player)
     {
         // Apply effect to the player
-        player.GetComponent<PlayerController>().bombRange += 1;
+        player.GetComponent<PlayerController>().speed += 0.5f;
 
         Destroy(gameObject);
     }
-
 }

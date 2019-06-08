@@ -22,8 +22,9 @@ public class MapController : MonoBehaviour
     [Header("Spawning Settings")]
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
-    public GameObject[] spawningPoints;
+    public GameObject[] spawnPoints;
 
+    // needed for the propagation
     readonly Vector3Int[] directions = new Vector3Int[]
     {
         Vector3Int.up,
@@ -32,17 +33,18 @@ public class MapController : MonoBehaviour
         Vector3Int.right
     };
 
+    // set the position of the player and the enemy
     public void Start()
     {
-        GameObject spawnPoint = spawningPoints[Random.Range(0, spawningPoints.Length)]; // select a random spawning point for the player
-        Instantiate(playerPrefab, spawnPoint.transform.position, Quaternion.identity);
+        GameObject spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)]; // select a random spawn point for the player
+        Instantiate(playerPrefab, spawnPoint.transform.position, Quaternion.identity); // spawn the Player
 
-        GameObject spawnPoint2 = spawningPoints[Random.Range(0, spawningPoints.Length)];
-        while (spawnPoint.transform.position == spawnPoint2.transform.position)
+        GameObject spawnPoint2 = spawnPoints[Random.Range(0, spawnPoints.Length)]; // select a random spawn point for the enemy
+        while (spawnPoint.transform.position == spawnPoint2.transform.position) // while the position choose is the same as the player position
         {
-            spawnPoint2 = spawningPoints[Random.Range(0, spawningPoints.Length)];
+            spawnPoint2 = spawnPoints[Random.Range(0, spawnPoints.Length)]; // chose another position (to avoid getting on the same place)
         }
-        Instantiate(enemyPrefab, spawnPoint2.transform.position, Quaternion.identity);
+        Instantiate(enemyPrefab, spawnPoint2.transform.position, Quaternion.identity); // spawn the Enemy
     }
 
     // handle the explosion effect
@@ -84,9 +86,8 @@ public class MapController : MonoBehaviour
             {
                 // We simply remove it
                 tilemap.SetTile(cellPos, null);
-
-                float random = Random.Range(0f, 1);
-                if (items.Length != 0 && Random.Range(0f, 1) >= 0.91f)
+                
+                if (items.Length != 0 && Random.Range(0f, 1) >= 0.86f) // 14% of chance to get a power up
                 {
                     // put a power-up
                     Instantiate(items[(int)Random.Range(0, items.Length)], pos, Quaternion.identity);
@@ -97,7 +98,7 @@ public class MapController : MonoBehaviour
             GameObject explosion = Instantiate(explosionPrefab, pos, Quaternion.identity);
 
             // Destroy the explosion after the animation
-            Destroy(explosion, explosion.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+            Destroy(explosion, explosion.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length - 0.2f);
         }
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - Tilemap
   - Background
   - SpawnPoint
+  - Enemy
   layers:
   - Default
   - TransparentFX
