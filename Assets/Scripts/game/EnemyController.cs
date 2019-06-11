@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour
     // needed to place the bomb
     public GameObject bombPrefab;
 
+    private Animator animator;
+    private Vector2 lookDirection = new Vector2(1, 0);
 
     private Rigidbody2D rb;
 
@@ -43,10 +45,12 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         direction = directions[Random.Range(0, directions.Length)];
         tilemap = GameObject.FindGameObjectWithTag("Tilemap").GetComponent<Tilemap>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
+        animator.SetBool("Moving", false);
         if (countdown <= 0)
         {
             direction = directions[Random.Range(0, directions.Length)];
@@ -60,7 +64,15 @@ public class EnemyController : MonoBehaviour
             countdown -= Time.deltaTime;
         }
 
+        lookDirection.Set(direction.x, direction.y);
+        lookDirection.Normalize();
+
+        animator.SetFloat("Look X", lookDirection.x); // set the sprite in X when iddle
+        animator.SetFloat("Look Y", lookDirection.y); // set the sprite in Y when iddle
+
         rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
+
+        animator.SetBool("Moving", true);
     }
 
     private void putBomb()
