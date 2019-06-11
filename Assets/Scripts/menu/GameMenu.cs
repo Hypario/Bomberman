@@ -22,9 +22,9 @@ public class GameMenu : MonoBehaviour
     // function called when the replay button is hit
     public void replay()
     {
-        if (GameManager.instance.paused())
+        if (GameManager.instance.IsPaused())
         {
-            GameManager.instance.pauseGame();
+            GameManager.instance.PauseGame();
         }
         GameManager.instance.End = false; // the game is not ended anymore
         SceneManager.LoadScene(Random.Range(1, SceneManager.sceneCountInBuildSettings));
@@ -33,9 +33,9 @@ public class GameMenu : MonoBehaviour
     // function called when the menu button is hit
     public void LoadMenu()
     {
-        if (GameManager.instance.paused()) // look if the game is paused
+        if (GameManager.instance.IsPaused()) // look if the game is paused
         {
-            GameManager.instance.pauseGame(); // resume the game if paused
+            GameManager.instance.PauseGame(); // resume the game if paused
         }
         GameManager.instance.End = false; // the game is not ended anymore
         SceneManager.LoadScene(0); // load the menu
@@ -44,9 +44,9 @@ public class GameMenu : MonoBehaviour
     // function called when the quit button is hit
     public void QuitGame()
     {
-        if (GameManager.instance.paused())
+        if (GameManager.instance.IsPaused())
         {
-            GameManager.instance.pauseGame();
+            GameManager.instance.PauseGame();
         }
         Application.Quit();
     }
@@ -54,21 +54,21 @@ public class GameMenu : MonoBehaviour
     // function called when the escape button is hit
     public void Pause()
     {
-        if (!GameManager.instance.paused()) // if the game isn't paused
+        if (!GameManager.instance.IsPaused()) // if the game isn't paused
         {
             pauseMenuUI.SetActive(true); // show the pause menu UI
         } else
         {
             pauseMenuUI.SetActive(false); // else hide it
         }
-        GameManager.instance.pauseGame(); // pause or resume the game
+        GameManager.instance.PauseGame(); // pause or resume the game
     }
 
     // button only for the demo
     public void Continue()
     {
         WinMenuUI.SetActive(false); // hide the Win menu
-        GameManager.instance.pauseGame(); // unpause the game (can only be called by the WinMenu so when paused)
+        GameManager.instance.PauseGame(); // unpause the game (can only be called by the WinMenu so when paused)
         GameManager.instance.End = false; // the game isn't ended anymore
     }
 }

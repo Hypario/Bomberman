@@ -5,10 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
+    // instance of the object
     public static GameManager instance;
 
+    // true if the game is over
     public bool End = false;
 
+    // singleton
     private void Awake()
     {
         if (instance == null)
@@ -22,8 +25,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // true if the game is paused
     bool pause = false;
 
+    // called when the player get hit by an explosion
     public void LoseGame()
     {
         if (!pause)
@@ -31,11 +36,12 @@ public class GameManager : MonoBehaviour
             GameObject.FindGameObjectWithTag("GameMenu").transform // find the GameMenu
                 .Find("GameOverMenu").gameObject // find The GameOverMenu
                 .SetActive(true); // show it
-            pauseGame();
-            End = true;
+            PauseGame(); // pause the game
+            End = true; // the game is ended
         }
     }
 
+    // called when the AI get hit by an explosion
     public void WinGame()
     {
         if (!pause)
@@ -43,25 +49,28 @@ public class GameManager : MonoBehaviour
             GameObject.FindGameObjectWithTag("GameMenu").transform // find the GameMenu
                 .Find("WinMenu").gameObject // find the WinMenu
                 .SetActive(true); // show it
-            pauseGame();
-            End = true;
+            PauseGame(); // pause the game
+            End = true; // the game is ended
         }
     }
 
-    public void pauseGame()
+    // pause or resume the game
+    public void PauseGame()
     {
+        // if the game isn't paused
         if (!pause)
         {
-            Time.timeScale = 0f;
-            pause = true;
+            Time.timeScale = 0f; // the time scale is set to 0
+            pause = true; // the game is stated as pause
         } else
         {
-            Time.timeScale = 1f;
-            pause = false;
+            Time.timeScale = 1f; // the time scale is set to 1
+            pause = false; // the game is resumed
         }
     }
 
-    public bool paused()
+    // return true if the game is paused, else false
+    public bool IsPaused()
     {
         return pause;
     }
