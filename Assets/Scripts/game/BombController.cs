@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class BombController : MonoBehaviour
 {
+    // stats of the bomb
     public float countdown = 2f;
+    public int range;
 
-    private int range;
+    // owner of the bomb (used to avoid spam of bomb)
     private PlayerController owner;
-   
+    private EnemyController AIowner;
+
     // Update is called once per frame
     void Update()
     {
@@ -18,7 +21,13 @@ public class BombController : MonoBehaviour
         {
             FindObjectOfType<MapController>().Explode(transform.position, range); // we notify the map that the bomb explode
             AudioManager.Instance.Play("explosion"); // the explosion audio is played
-            owner.bombPlaced--; // the bomb explode, we notify the owner of the bomb he can place another one
+            if (owner != null)
+            {
+                owner.bombPlaced--;
+            } else
+            {
+                AIowner.bombPlaced--;
+            }
             Destroy(gameObject); // the bomb is destroyed
         }
     }
@@ -30,8 +39,11 @@ public class BombController : MonoBehaviour
     }
 
     // set the owner of the bomb
-    public void SetOwner(PlayerController owner)
+    public void SetOwner(GameObject owner)
     {
-        this.owner = owner;
+        if (owner.CompareTag("Player"))
+            this.owner = owner.GetComponent<PlayerController>();
+        else
+            AIowner = owner.GetComponent<EnemyController>();
     }
 }

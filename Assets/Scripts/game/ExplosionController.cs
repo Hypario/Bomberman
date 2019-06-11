@@ -12,7 +12,8 @@ public class ExplosionController : MonoBehaviour
             FindObjectOfType<GameManager>().LoseGame();
         } else if (other.CompareTag("Enemy"))
         {
-            Debug.Log("Enemy dead");
+            FindObjectOfType<GameManager>().WinGame();
+            Destroy(other.gameObject); // only for the demo
         }
     }
 

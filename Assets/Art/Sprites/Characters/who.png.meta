@@ -1,55 +1,43 @@
 fileFormatVersion: 2
-guid: c1051fae71da4e84e85d70c96b826a8c
+guid: 1d7e88ed219a63f41ba809e98b7e442c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 606815385290419204
-    second: bomberman_0
+      213: 4566551358173590068
+    second: rpg_character_0
   - first:
-      213: -5514239266102739273
-    second: bomberman_1
+      213: 1250724968197730098
+    second: rpg_character_1
   - first:
-      213: -2563568305980069896
-    second: bomberman_2
+      213: 865637615008815882
+    second: rpg_character_2
   - first:
-      213: 5908037983293996752
-    second: bomberman_3
+      213: -6089268890228576249
+    second: rpg_character_3
   - first:
-      213: -5717266188942580074
-    second: bomberman_4
+      213: 7803076612712142173
+    second: rpg_character_4
   - first:
-      213: -7734626486112493306
-    second: bomberman_5
+      213: 3183842322617269064
+    second: rpg_character_5
   - first:
-      213: 7101649200011125524
-    second: bomberman_6
+      213: -2343537180100209746
+    second: rpg_character_6
   - first:
-      213: -7376293594790177015
-    second: bomberman_7
+      213: 836870287754956474
+    second: rpg_character_7
   - first:
-      213: 369425805612540251
-    second: bomberman_8
+      213: 3921246487372101286
+    second: rpg_character_8
   - first:
-      213: 8973344428442287494
-    second: bomberman_9
+      213: -8307486959726074088
+    second: rpg_character_9
   - first:
-      213: -1279012168302359326
-    second: bomberman_10
+      213: -5759362505202833849
+    second: rpg_character_10
   - first:
-      213: -231092596940677593
-    second: bomberman_11
-  - first:
-      213: -6399829903545349190
-    second: bomberman_12
-  - first:
-      213: -5640541782330393381
-    second: bomberman_13
-  - first:
-      213: -4637408479436346706
-    second: bomberman_14
-  - first:
-      213: -2658181086043229681
-    second: bomberman_15
+      213: 8077971218393389506
+    second: rpg_character_11
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -93,7 +81,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 27
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -182,337 +170,253 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bomberman_0
+      name: rpg_character_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 124
-        width: 27
-        height: 36
-      alignment: 9
-      pivot: {x: 0.5333554, y: 0.11974886}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b4fc95d3038ae0f4e985de4af49b047c
-      internalID: 606815385290419204
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bomberman_1
-      rect:
-        serializedVersion: 2
-        x: 27
-        y: 124
-        width: 27
+        y: 108
+        width: 41.333332
         height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 799b1ed4ddf156a4583c175ee231a986
-      internalID: -5514239266102739273
+      spriteID: 830306569d27bec4894edabd08eee281
+      internalID: 4566551358173590068
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bomberman_2
+      name: rpg_character_1
       rect:
         serializedVersion: 2
-        x: 54
-        y: 124
-        width: 27
+        x: 41
+        y: 108
+        width: 41.333332
         height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4c8b2554c8d7624f917ff3d0df3f10e
-      internalID: -2563568305980069896
+      spriteID: f5fa323d0fcc38242b8f20a9a9b9789c
+      internalID: 1250724968197730098
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bomberman_3
+      name: rpg_character_2
       rect:
         serializedVersion: 2
-        x: 81
-        y: 125
-        width: 27
-        height: 35
+        x: 82
+        y: 108
+        width: 41.333332
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12700bdc79911df4d8f5db410c9bfc89
-      internalID: 5908037983293996752
+      spriteID: e4b18502d39fcb14ab1aa3579fdf0341
+      internalID: 865637615008815882
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bomberman_4
+      name: rpg_character_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 85
-        width: 27
-        height: 35
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 16a75efc9b6c96b4abe03bc0f1c57696
-      internalID: -5717266188942580074
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bomberman_5
-      rect:
-        serializedVersion: 2
-        x: 27
-        y: 85
-        width: 27
-        height: 35
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c32302c72cc54e94ca1ba70a55eca7f8
-      internalID: -7734626486112493306
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bomberman_6
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 85
-        width: 27
-        height: 35
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0e674449d907cb04f8066250e991589d
-      internalID: 7101649200011125524
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bomberman_7
-      rect:
-        serializedVersion: 2
-        x: 81
-        y: 85
-        width: 27
-        height: 35
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 95091450a3a650f478296f36084581db
-      internalID: -7376293594790177015
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bomberman_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 43
-        width: 27
-        height: 37
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a0cd33d00504b274f9f3fe83cb8d8e62
-      internalID: 369425805612540251
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bomberman_9
-      rect:
-        serializedVersion: 2
-        x: 27
-        y: 43
-        width: 27
-        height: 37
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3e04809e8f71c54438e4f0d9ba76f825
-      internalID: 8973344428442287494
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bomberman_10
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 43
-        width: 27
-        height: 37
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1d40ab12ea66d544b827eb1f6dc6a9c2
-      internalID: -1279012168302359326
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bomberman_11
-      rect:
-        serializedVersion: 2
-        x: 81
-        y: 44
-        width: 27
+        y: 72
+        width: 41.333332
         height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a0d0d100cdeef34bbd24b79a42bed35
-      internalID: -231092596940677593
+      spriteID: aad8d0b4b5520d04c91990bcc6091bf2
+      internalID: -6089268890228576249
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bomberman_12
+      name: rpg_character_4
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 72
+        width: 41.333332
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5085caa4a2fb1bb4ba2a973f37bf79a4
+      internalID: 7803076612712142173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rpg_character_5
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 72
+        width: 41.333332
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad517c8faf5f89d489f8c7572a14d51b
+      internalID: 3183842322617269064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rpg_character_6
       rect:
         serializedVersion: 2
         x: 0
-        y: 2
-        width: 27
-        height: 38
+        y: 36
+        width: 41.333332
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ff3aa2bfa98ff34685cd92ba18c5f8c
-      internalID: -6399829903545349190
+      spriteID: 88bf561a93e4d4440920d24f7f63a470
+      internalID: -2343537180100209746
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bomberman_13
+      name: rpg_character_7
       rect:
         serializedVersion: 2
-        x: 27
-        y: 2
-        width: 27
-        height: 38
+        x: 41
+        y: 36
+        width: 41.333332
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7c0a5c78daaa064fa25989f8de969af
-      internalID: -5640541782330393381
+      spriteID: 80129871c8d2905458e143f6be2b989d
+      internalID: 836870287754956474
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bomberman_14
+      name: rpg_character_8
       rect:
         serializedVersion: 2
-        x: 54
-        y: 2
-        width: 27
-        height: 38
+        x: 82
+        y: 36
+        width: 41.333332
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc71605363e464a4d946243a8fa8fa35
-      internalID: -4637408479436346706
+      spriteID: ca386f4262f8dc54a83d529c7bcc7d6f
+      internalID: 3921246487372101286
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bomberman_15
+      name: rpg_character_9
       rect:
         serializedVersion: 2
-        x: 81
-        y: 2
-        width: 27
-        height: 38
+        x: 0
+        y: 0
+        width: 41.333332
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f434e1c09123df44f8a7aee9b99288f8
-      internalID: -2658181086043229681
+      spriteID: 0887b4dff3da9714c929b916e4b228f8
+      internalID: -8307486959726074088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rpg_character_10
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 0
+        width: 41.333332
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d7cd87338e998f48b268c4ddf3f5d63
+      internalID: -5759362505202833849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rpg_character_11
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 0
+        width: 41.333332
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa3a9699e1da53447b66f73fb20445d3
+      internalID: 8077971218393389506
       vertices: []
       indices: 
       edges: []

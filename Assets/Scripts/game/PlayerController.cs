@@ -4,8 +4,8 @@ using UnityEngine.Tilemaps;
 public class PlayerController : MonoBehaviour
 {
 
+    // needed to place the bomb
     private Tilemap tilemap;
-
     public GameObject bombPrefab;
 
     // stats
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
                 // set the range of the bomb and his owner
                 BombController BombController = bomb.GetComponent<BombController>();
                 BombController.SetRange(bombRange);
-                BombController.SetOwner(this);
+                BombController.SetOwner(gameObject);
             }
         }
     }

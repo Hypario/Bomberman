@@ -34,7 +34,7 @@ public class MapController : MonoBehaviour
     };
 
     // set the position of the player and the enemy
-    public void Start()
+    void Start()
     {
         GameObject spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)]; // select a random spawn point for the player
         Instantiate(playerPrefab, spawnPoint.transform.position, Quaternion.identity); // spawn the Player
