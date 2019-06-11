@@ -56,8 +56,8 @@ public class PlayerController : MonoBehaviour
         Vector2 position = body.position;
         position = position + move * speed * Time.deltaTime;
         body.MovePosition(position); // move the "entity"
-
-        if (Input.GetKeyDown("space")) // if we hit the spacebar
+        
+        if (Input.GetKeyDown("space") && !GameManager.instance.paused()) // if we hit the spacebar and the game isn't paused
         {
             Vector3Int cell = tilemap.WorldToCell(position); // get the cell the player is standing on
             Vector3 cellCenterPos = tilemap.GetCellCenterWorld(cell); // get the center of the cell

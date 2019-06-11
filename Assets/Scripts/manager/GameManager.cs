@@ -5,19 +5,64 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    // the win and the game over menu
-    public GameObject GameOverUI;
-    public GameObject WinUI;
+    public static GameManager instance;
+
+    public bool End = false;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        } else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
+    bool pause = false;
 
     public void LoseGame()
     {
-        GameOverUI.SetActive(true);
-        Time.timeScale = 0f;
+        if (!pause)
+        {
+            GameObject.FindGameObjectWithTag("GameMenu").transform // find the GameMenu
+                .Find("GameOverMenu").gameObject // find The GameOverMenu
+                .SetActive(true); // show it
+            pauseGame();
+            End = true;
+        }
     }
 
     public void WinGame()
     {
-        WinUI.SetActive(true);
-        Time.timeScale = 0f;
+        if (!pause)
+        {
+            GameObject.FindGameObjectWithTag("GameMenu").transform // find the GameMenu
+                .Find("WinMenu").gameObject // find the WinMenu
+                .SetActive(true); // show it
+            pauseGame();
+            End = true;
+        }
+    }
+
+    public void pauseGame()
+    {
+        if (!pause)
+        {
+            Time.timeScale = 0f;
+            pause = true;
+        } else
+        {
+            Time.timeScale = 1f;
+            pause = false;
+        }
+    }
+
+    public bool paused()
+    {
+        return pause;
     }
 }

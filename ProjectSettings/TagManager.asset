@@ -11,6 +11,8 @@ TagManager:
   - SpawnPoint
   - Enemy
   - GameOverUi
+  - WinUi
+  - GameMenu
   layers:
   - Default
   - TransparentFX

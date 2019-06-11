@@ -9,10 +9,10 @@ public class ExplosionController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            FindObjectOfType<GameManager>().LoseGame();
+            GameManager.instance.LoseGame();
         } else if (other.CompareTag("Enemy"))
         {
-            FindObjectOfType<GameManager>().WinGame();
+            GameManager.instance.WinGame();
             Destroy(other.gameObject); // only for the demo
         }
     }

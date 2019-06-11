@@ -21,7 +21,7 @@ public class BombController : MonoBehaviour
         {
             FindObjectOfType<MapController>().Explode(transform.position, range); // we notify the map that the bomb explode
             AudioManager.Instance.Play("explosion"); // the explosion audio is played
-            if (owner != null)
+            if (owner != null) // if the owner is the player
             {
                 owner.bombPlaced--;
             } else
