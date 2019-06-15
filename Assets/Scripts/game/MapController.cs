@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class MapController : MonoBehaviour
 {
+    // the composition of the world map
     [Header("World Settings")]
     public Tilemap tilemap;
 

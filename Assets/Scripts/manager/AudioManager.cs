@@ -2,6 +2,7 @@
 using System;
 using UnityEngine;
 
+// allow us to get acces to the sound from everywhere
 public class AudioManager : MonoBehaviour
 {
 
@@ -12,7 +13,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-
+        // singleton pattern
         if (Instance == null)
         {
             Instance = this;
@@ -24,6 +25,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
+        // foreach sound we want them to have the AudioSource component to display sound
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
@@ -36,20 +38,24 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    // launch the main theme sound when starting the game
     private void Start()
     {
         Play("Theme");
     }
 
+    // play the sound when found
     public void Play(string name)
     {
+        // search for the sound in the array of Sound
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {
+            // if it is not found, an error is thrown in the inspector (can't be seen when build)
             Debug.LogWarning("Sound : " + name + " not found !");
             return;
         }
-
+        // if found, we play it
         s.source.Play();
     }
 }

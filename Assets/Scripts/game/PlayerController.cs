@@ -31,6 +31,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Move();
+        
+        if (Input.GetKeyDown("space") && !GameManager.instance.IsPaused()) // if we hit the spacebar and the game isn't paused
+        {
+            PutBomb();
+        }
+    }
+
+
+    // Move the player if receive an input
+    void Move()
+    {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
@@ -45,7 +58,8 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Moving", true); // set the animation to moving
             animator.SetFloat("Move X", horizontal); // set the sprite in X when moving
             animator.SetFloat("Move Y", vertical); // set the sprite in Y when moving
-        } else // else we set the animation where we are looking at and set the animation to Iddle
+        }
+        else // else we set the animation where we are looking at and set the animation to Iddle
         {
             animator.SetBool("Moving", false);
             animator.SetFloat("Look X", lookDirection.x); // set the sprite in X when iddle
@@ -53,27 +67,25 @@ public class PlayerController : MonoBehaviour
         }
 
         // calculate the next position based on the direction and speed in unit per second
-        Vector2 position = body.position;
-        position = position + move * speed * Time.deltaTime;
-        body.MovePosition(position); // move the "entity"
-        
-        if (Input.GetKeyDown("space") && !GameManager.instance.IsPaused()) // if we hit the spacebar and the game isn't paused
-        {
-            Vector3Int cell = tilemap.WorldToCell(position); // get the cell the player is standing on
-            Vector3 cellCenterPos = tilemap.GetCellCenterWorld(cell); // get the center of the cell
-            
-            // if we aren't on a bomb, create a bomb
-            if (!IsBomb(cellCenterPos) && bombPlaced < bombMax)
-            {
-                // create a bomb
-                GameObject bomb = Instantiate(bombPrefab, cellCenterPos, Quaternion.identity);
-                bombPlaced++; // increment the counter (when the bomb explose, the bomb is decremented)
+        body.MovePosition(body.position + move * speed * Time.deltaTime);
+    }
 
-                // set the range of the bomb and his owner
-                BombController BombController = bomb.GetComponent<BombController>();
-                BombController.SetRange(bombRange);
-                BombController.SetOwner(gameObject);
-            }
+    void PutBomb()
+    {
+        Vector3Int cell = tilemap.WorldToCell(body.position); // get the cell the player is standing on
+        Vector3 cellCenterPos = tilemap.GetCellCenterWorld(cell); // get the center of the cell
+
+        // if we aren't on a bomb, create a bomb
+        if (!IsBomb(cellCenterPos) && bombPlaced < bombMax)
+        {
+            // create a bomb
+            GameObject bomb = Instantiate(bombPrefab, cellCenterPos, Quaternion.identity);
+            bombPlaced++; // increment the counter (when the bomb explose, the bomb is decremented)
+
+            // set the range of the bomb and his owner
+            BombController BombController = bomb.GetComponent<BombController>();
+            BombController.SetRange(bombRange);
+            BombController.SetOwner(gameObject);
         }
     }
 

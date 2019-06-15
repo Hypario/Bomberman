@@ -15,7 +15,7 @@ public class EnemyController : MonoBehaviour
     private Animator animator;
     private Vector2 lookDirection = new Vector2(1, 0);
 
-    private Rigidbody2D rb;
+    private Rigidbody2D body;
 
     public float speed = 2.5f;
 
@@ -29,6 +29,7 @@ public class EnemyController : MonoBehaviour
 
     Vector2 direction;
 
+    // cooldown for each decision he makes
     private float countdown = 2f;
 
     // counter for the bombs
@@ -40,9 +41,10 @@ public class EnemyController : MonoBehaviour
         direction = directions[Random.Range(0, directions.Length)];
     }
 
+    // get all the components needed 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        body = GetComponent<Rigidbody2D>();
         direction = directions[Random.Range(0, directions.Length)];
         tilemap = GameObject.FindGameObjectWithTag("Tilemap").GetComponent<Tilemap>();
         animator = GetComponent<Animator>();
@@ -50,34 +52,35 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        animator.SetBool("Moving", false);
-        if (countdown <= 0)
+        animator.SetBool("Moving", false); // the AI is not moving by default
+        if (countdown <= 0) // if the countdown is set at 0 (2 seconds passed)
         {
-            direction = directions[Random.Range(0, directions.Length)];
+            direction = directions[Random.Range(0, directions.Length)]; // choose a random direction
             if (Random.Range(0f, 1f) <= 0.90)
             {
-                putBomb();
+                PutBomb(); // put a bomb randomly (the random here helps to prevent the spamming of bomb)
             }
-            countdown = 2f;
+            countdown = 2f; // reset the countdown
         } else
         {
-            countdown -= Time.deltaTime;
+            countdown -= Time.deltaTime; // decrease the countdown by seconds
         }
 
-        lookDirection.Set(direction.x, direction.y);
+        lookDirection.Set(direction.x, direction.y); // set the variable lookDirection the AI is looking at
         lookDirection.Normalize();
 
         animator.SetFloat("Look X", lookDirection.x); // set the sprite in X when iddle
         animator.SetFloat("Look Y", lookDirection.y); // set the sprite in Y when iddle
 
-        rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
+        body.MovePosition(body.position + direction * speed * Time.deltaTime); // move the AI
 
-        animator.SetBool("Moving", true);
+        animator.SetBool("Moving", true); // the AI is moving (because we made him move earlier)
     }
 
-    private void putBomb()
+    // put a bomb
+    private void PutBomb()
     {
-        Vector3Int cell = tilemap.WorldToCell(rb.position); // get the cell the player is standing on
+        Vector3Int cell = tilemap.WorldToCell(body.position); // get the cell the player is standing on
         Vector3 cellCenterPos = tilemap.GetCellCenterWorld(cell); // get the center of the cell
 
         // if we aren't on a bomb, create a bomb

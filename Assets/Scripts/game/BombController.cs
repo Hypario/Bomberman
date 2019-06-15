@@ -23,10 +23,10 @@ public class BombController : MonoBehaviour
             AudioManager.Instance.Play("explosion"); // the explosion audio is played
             if (owner != null) // if the owner is the player
             {
-                owner.bombPlaced--;
+                owner.bombPlaced--; // we decrease the number of bomb he placed
             } else
             {
-                AIowner.bombPlaced--;
+                AIowner.bombPlaced--; // same thing for the AI
             }
             Destroy(gameObject); // the bomb is destroyed
         }

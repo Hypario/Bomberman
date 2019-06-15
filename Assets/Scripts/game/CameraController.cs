@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+// used to have the screen adapted to the map for every resolution
 public class CameraController : MonoBehaviour
 {
 

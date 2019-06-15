@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     // true if the game is over
     public bool End = false;
 
+    // true if the game is paused
+    bool pause = false;
+
     // singleton
     private void Awake()
     {
@@ -24,9 +27,6 @@ public class GameManager : MonoBehaviour
             return;
         }
     }
-
-    // true if the game is paused
-    bool pause = false;
 
     // called when the player get hit by an explosion
     public void LoseGame()
